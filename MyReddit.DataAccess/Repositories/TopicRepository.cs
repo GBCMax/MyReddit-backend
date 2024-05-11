@@ -17,7 +17,7 @@ namespace MyReddit.DataAccess.Repositories
         {
             _db = context;
         }
-        public async Task Add(Topic topic)
+        public async Task<Guid> Add(Topic topic)
         {
             var topicEntity = new TopicEntity
             {
@@ -27,6 +27,8 @@ namespace MyReddit.DataAccess.Repositories
             
             await _db.Topics.AddAsync(topicEntity);
             await _db.SaveChangesAsync();
+
+            return topicEntity.Id;
         }
         public async Task<List<Topic>> GetAll()
         {

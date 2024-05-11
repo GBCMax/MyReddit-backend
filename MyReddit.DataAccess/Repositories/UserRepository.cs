@@ -51,7 +51,7 @@ namespace MyReddit.DataAccess.Repositories
         {
             var userEntity = await _db.Users
                 .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.Email.Contains(email));
+                .FirstOrDefaultAsync(x => x.Email.ToLower().Contains(email.ToLower()));
 
             if (userEntity == null)
             {

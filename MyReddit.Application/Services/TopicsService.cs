@@ -15,9 +15,9 @@ namespace MyReddit.Application.Services
         {
             _topicRepository = topicRepository;
         }
-        public async Task AddTopic(Topic topic)
+        public async Task<Guid> AddTopic(Topic topic)
         {
-            await _topicRepository.Add(topic);
+            return await _topicRepository.Add(topic);
         }
 
         public async Task<Guid> DeleteTopic(Guid id)

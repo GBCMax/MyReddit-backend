@@ -8,7 +8,7 @@ using MyReddit.DataAccess.Repositories;
 namespace MyReddit.API.Controllers
 {
     [ApiController]
-    [Route("{controller}")]
+    [Route("api/[controller]")]
     public class UsersController : ControllerBase
     {
         private readonly IUserService _usersService;

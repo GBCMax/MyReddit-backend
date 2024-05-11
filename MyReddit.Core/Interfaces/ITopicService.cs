@@ -9,7 +9,7 @@ namespace MyReddit.Core.Interfaces
 {
     public interface ITopicService
     {
-        Task AddTopic(Topic topic);
+        Task<Guid> AddTopic(Topic topic);
         Task<List<Topic>> GetAllTopics();
         Task<List<Topic>> GetTopicByName(string name);
         Task<Guid> UpdateTopic(Guid id, string name);
