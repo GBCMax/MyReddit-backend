@@ -21,8 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MyReddit.Application\MyReddit.Application.csproj" />
     <ProjectReference Include="..\MyReddit.DataAccess\MyReddit.DataAccess.csproj" />
-    <ProjectReference Include="..\MyReddit.Logic\MyReddit.Logic.csproj" />
   </ItemGroup>
 
 </Project>

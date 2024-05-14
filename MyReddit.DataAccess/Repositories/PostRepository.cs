@@ -17,23 +17,13 @@ namespace MyReddit.DataAccess.Repositories
         {
             _db = context;
         }
-        public async Task<Guid> Create(Post post, User user, Topic topic)
+        public async Task<Guid> Create(Post post, Guid userId, Guid topicId)
         {
             var userEntity = await _db.Users
-                .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.Email == user.Email) ?? throw new Exception();
+                .FirstOrDefaultAsync(x => x.Id == userId) ?? throw new Exception($"Пользователь не найден!");
 
             var topicEntity = await _db.Topics
-                .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.Id == topic.Id);
-            if (topicEntity == default)
-            {
-                topicEntity = new TopicEntity
-                {
-                    Id = topic.Id,
-                    Name = topic.Name
-                };
-            }
+                .FirstOrDefaultAsync(x => x.Id == topicId) ?? throw new Exception($"Топик не найден!");
 
             var postEntity = new PostEntity
             {
@@ -46,6 +36,7 @@ namespace MyReddit.DataAccess.Repositories
                 UserEntityId = userEntity.Id
             };
 
+            await _db.Posts.AddAsync(postEntity);
             userEntity.CreatePostEntity(postEntity);
             topicEntity.AddPostEntity(postEntity);
 
@@ -60,6 +51,46 @@ namespace MyReddit.DataAccess.Repositories
             .Select(x => Post.Create(x.Id, x.Title, x.Content).Post)
             .ToListAsync();
 
+        public async Task<List<Post>> GetByUser(Guid userId)
+        {
+            var user = await _db.Users
+                .AsNoTracking()
+                .Where(x => x.Id == userId)
+                .SingleOrDefaultAsync();
+
+            if(user == null)
+            {
+                throw new Exception("Пользователь не найден!");
+            }
+
+            var posts = await _db.Posts
+                .AsNoTracking()
+                .Where(x => x.UserEntityId == user.Id)
+                .Select(x => Post.Create(x.Id, x.Title, x.Content).Post)
+                .ToListAsync();
+
+            return posts;
+        }
+        public async Task<List<Post>> GetByTopic(Guid topicId)
+        {
+            var topic = await _db.Topics
+                .AsNoTracking()
+                .Where(x => x.Id == topicId)
+                .SingleOrDefaultAsync();
+
+            if (topic == null)
+            {
+                throw new Exception("Топик не найден!");
+            }
+
+            var posts = await _db.Posts
+                .AsNoTracking()
+                .Where(x => x.TopicEntityId == topic.Id)
+                .Select(x => Post.Create(x.Id, x.Title, x.Content).Post)
+                .ToListAsync();
+
+            return posts;
+        }
         public async Task<List<Post>> GetAll()
         {
             var postEntities = await _db.Posts

@@ -9,9 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyReddit.Core", "MyReddit.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyReddit.DataAccess", "MyReddit.DataAccess\MyReddit.DataAccess.csproj", "{F24C26BB-A1CA-46CC-B86C-CC48750B37AF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyReddit.Logic", "MyReddit.Logic\MyReddit.Logic.csproj", "{4CCB7B7D-50D5-4DF3-AAFF-9D616B7C401E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyReddit.Application", "MyReddit.Application\MyReddit.Application.csproj", "{4F632A82-E441-449C-B6C8-3ACF495A5401}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyReddit.Application", "MyReddit.Application\MyReddit.Application.csproj", "{4F632A82-E441-449C-B6C8-3ACF495A5401}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +29,6 @@ Global
 		{F24C26BB-A1CA-46CC-B86C-CC48750B37AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F24C26BB-A1CA-46CC-B86C-CC48750B37AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F24C26BB-A1CA-46CC-B86C-CC48750B37AF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4CCB7B7D-50D5-4DF3-AAFF-9D616B7C401E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4CCB7B7D-50D5-4DF3-AAFF-9D616B7C401E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4CCB7B7D-50D5-4DF3-AAFF-9D616B7C401E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4CCB7B7D-50D5-4DF3-AAFF-9D616B7C401E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4F632A82-E441-449C-B6C8-3ACF495A5401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4F632A82-E441-449C-B6C8-3ACF495A5401}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F632A82-E441-449C-B6C8-3ACF495A5401}.Release|Any CPU.ActiveCfg = Release|Any CPU

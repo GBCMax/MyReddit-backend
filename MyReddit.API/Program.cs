@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using MyReddit.Application.Services;
 using MyReddit.Core.Interfaces;
 using MyReddit.DataAccess;
 using MyReddit.DataAccess.Mappings;
 using MyReddit.DataAccess.Repositories;
-using MyReddit.Logic.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -20,11 +20,11 @@ builder.Services.AddDbContext<MyRedditDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(MyRedditDbContext)));
 });
 
-builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserService, UsersService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddScoped<IPostService, PostsService>();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
-builder.Services.AddScoped<ITopicService, TopicService>();
+builder.Services.AddScoped<ITopicService, TopicsService>();
 builder.Services.AddScoped<ITopicRepository, TopicRepository>();
 
 builder.Services.AddAutoMapper(typeof(DataBaseMappings));

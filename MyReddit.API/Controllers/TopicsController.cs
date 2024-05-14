@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyReddit.API.Contracts;
+using MyReddit.API.Contracts.Topics;
 using MyReddit.Core.Interfaces;
 using MyReddit.Core.Models;
 

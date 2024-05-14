@@ -15,9 +15,9 @@ namespace MyReddit.Logic.Services
         {
             _postRepository = postRepository;
         }
-        public async Task<Guid> CreatePost(Post post, User user, Topic topic)
+        public async Task<Guid> CreatePost(Post post, Guid userId, string topicName)
         {
-            return await _postRepository.Create(post, user, topic);
+            return await _postRepository.Create(post, userId, topicName);
         }
 
         public async Task<Guid> DeletePost(Guid id)
@@ -33,6 +33,16 @@ namespace MyReddit.Logic.Services
         public async Task<List<Post>> GetPostByTitle(string partOfTitle)
         {
             return await _postRepository.GetByTitle(partOfTitle);
+        }
+
+        public async Task<List<Post>> GetPostByTopic(Guid topicId)
+        {
+            return await _postRepository.GetByTopic(topicId);
+        }
+
+        public async Task<List<Post>> GetPostByUser(Guid userId)
+        {
+            return await _postRepository.GetByUser(userId);
         }
 
         public async Task<Guid> UpdatePost(Guid id, string title, string content)

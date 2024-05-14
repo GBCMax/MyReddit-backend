@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using MyReddit.API.Contracts;
+using MyReddit.API.Contracts.Users;
 using MyReddit.Core.Interfaces;
 using MyReddit.Core.Models;
 using MyReddit.DataAccess.Repositories;
