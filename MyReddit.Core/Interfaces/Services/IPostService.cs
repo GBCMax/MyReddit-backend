@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyReddit.Core.Interfaces
+namespace MyReddit.Core.Interfaces.Services
 {
     public interface IPostService
     {

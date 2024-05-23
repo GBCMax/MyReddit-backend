@@ -1,4 +1,5 @@
-﻿using MyReddit.Core.Interfaces;
+﻿using MyReddit.Core.Interfaces.Repo;
+using MyReddit.Core.Interfaces.Services;
 using MyReddit.Core.Models;
 using System;
 using System.Collections.Generic;

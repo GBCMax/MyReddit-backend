@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MyReddit.Core.Interfaces;
+using MyReddit.Core.Interfaces.Repo;
 using MyReddit.Core.Models;
 using MyReddit.DataAccess.Entities;
 using System;

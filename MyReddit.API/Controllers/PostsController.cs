@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyReddit.API.Contracts;
 using MyReddit.API.Contracts.Posts;
-using MyReddit.Core.Interfaces;
+using MyReddit.Core.Interfaces.Services;
 using MyReddit.Core.Models;
 
 namespace MyReddit.API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class PostsController : ControllerBase
     {

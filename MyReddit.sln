@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyReddit.DataAccess", "MyRe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyReddit.Application", "MyReddit.Application\MyReddit.Application.csproj", "{4F632A82-E441-449C-B6C8-3ACF495A5401}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyReddit.Infrastructure", "MyReddit.Infrastructure\MyReddit.Infrastructure.csproj", "{6AF0DD0F-5AD7-4127-A5A7-A5E2309C4CFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4F632A82-E441-449C-B6C8-3ACF495A5401}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F632A82-E441-449C-B6C8-3ACF495A5401}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F632A82-E441-449C-B6C8-3ACF495A5401}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AF0DD0F-5AD7-4127-A5A7-A5E2309C4CFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AF0DD0F-5AD7-4127-A5A7-A5E2309C4CFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AF0DD0F-5AD7-4127-A5A7-A5E2309C4CFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AF0DD0F-5AD7-4127-A5A7-A5E2309C4CFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

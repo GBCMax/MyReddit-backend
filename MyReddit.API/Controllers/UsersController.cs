@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using MyReddit.API.Contracts.Users;
-using MyReddit.Core.Interfaces;
+using MyReddit.Application.Services;
+using MyReddit.Core.Interfaces.Services;
 using MyReddit.Core.Models;
 using MyReddit.DataAccess.Repositories;
 
@@ -12,9 +13,12 @@ namespace MyReddit.API.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUserService _usersService;
-        public UsersController(IUserService userService)
+        private readonly IHttpContextAccessor _context;
+        public UsersController(IUserService userService, IHttpContextAccessor context)
         {
             _usersService = userService;
+            _context = context;
+
         }
 
         [HttpGet("GetAllUsers")]
@@ -42,23 +46,22 @@ namespace MyReddit.API.Controllers
             return Ok(response);
         }
 
-        [HttpPost]
-        public async Task<ActionResult<Guid>> AddUser([FromBody] UsersRequest request)
+        [HttpPost("Register")]
+        public async Task<ActionResult<RegisterUserRequest>> Register([FromBody] RegisterUserRequest request)
         {
-            var (user, error) = Core.Models.User.Create(
-                Guid.NewGuid(),
-                request.Name,
-                request.Password,
-                request.Email);
+            await _usersService.Register(request.UserName, request.Email, request.Password);
 
-            if (!string.IsNullOrEmpty(error))
-            {
-                return BadRequest(error);
-            }
+            return Ok();
+        }
 
-            var userId = await _usersService.AddUser(user);
+        [HttpPost("Login")]
+        public async Task<ActionResult<LoginUserRequest>> Login([FromBody] LoginUserRequest request)
+        {
+            var token = await _usersService.Login(request.Email, request.Password);
 
-            return Ok(userId);
+            _context.HttpContext?.Response.Cookies.Append("my-cookies", token);
+
+            return Ok(token);
         }
 
         [HttpPut("{id:guid}")]
